@@ -28,7 +28,8 @@ public class SecurityConfig {
                 .requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().authenticated()
             .and()
-                .formLogin()
+                .formLogin()   
+                
             .and()
                 .logout();
 
