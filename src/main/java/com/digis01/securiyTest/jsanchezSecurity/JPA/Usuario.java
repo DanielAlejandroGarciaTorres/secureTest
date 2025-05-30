@@ -64,10 +64,12 @@ public class Usuario {
         return userName;
     }
 
-    public void setUserName(String UserName) {
-        this.userName = UserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
+    
+    
     public String getPassword() {
         return Password;
     }
