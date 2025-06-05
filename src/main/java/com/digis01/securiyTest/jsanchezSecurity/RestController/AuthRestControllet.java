@@ -35,14 +35,14 @@ public class AuthRestControllet {
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Usuario request) {
+    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            request.getUserName(), request.getPassword())
+                            usuario.getUserName(), usuario.getPassword())
             );
-
-            UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUserName());
+            
+            UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getUserName());
             String token = jwtUtil.generateToken(userDetails);
 
             return ResponseEntity.ok(new LoginResponse(token));

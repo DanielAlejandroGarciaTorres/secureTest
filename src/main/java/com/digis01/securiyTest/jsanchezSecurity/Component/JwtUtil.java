@@ -5,6 +5,7 @@
 package com.digis01.securiyTest.jsanchezSecurity.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -45,6 +46,11 @@ public class JwtUtil {
     }
 
     private Claims getClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        
+        JwtParser parser = Jwts.parserBuilder()
+                .setSigningKey(SECRET_KEY)
+                .build();
+
+        return parser.parseClaimsJws(token).getBody();
     }
 }
